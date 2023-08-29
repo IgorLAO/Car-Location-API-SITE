@@ -4,21 +4,27 @@ USE ELITE_WHEELS_DB;
 
 CREATE TABLE CLIENTS_TB(
 	ID_CLIENT					INT PRIMARY KEY auto_increment,
-    NM_CLIENT					VARCHAR(100),
-    DS_EMAIL					VARCHAR(200),
-    DS_TELEFONE					VARCHAR(100),
-    DS_CPF						VARCHAR(100),
-    DS_CNH						VARCHAR(100)
+    NM_CLIENT					VARCHAR(100) not null,
+    DS_EMAIL					VARCHAR(200) not null,
+    DS_TELEFONE					VARCHAR(100) not null,
+    DS_CPF						VARCHAR(100) not null,
+    DS_CNH						VARCHAR(100) not null
 );
 
-drop table CLIENTS_TB;
 
-SELECT * FROM CLIENTS_TB;
+CREATE TABLE TYPES_CARS_TB(	
+	ID_TYPE		INT primary KEY auto_increment,
+    NM_TYPE		VARCHAR(100) NOT NULL
+);
+	
+CREATE TABLE CARS_TB(
+	ID_CAR				INT primary KEY auto_increment,
+    ID_TYPE				INT NOT NULL,
+    DS_MODEL			VARCHAR (100) NOT NULL,
+    DS_BRAND			VARCHAR (100) NOT NULL,
+    NR_YEAR				DATE,
+    DS_PLACA			VARCHAR (100),
+    FOREIGN KEY (ID_TYPE) REFERENCES TYPES_CARS_TB(ID_TYPE)
+);
+	
 
- UPDATE CLIENTS_TB 
-        SET NM_CLIENT = 'jajajja',
-        DS_EMAIL = 'aaaaaaa',
-        DS_TELEFONE = '1111111111', 
-        DS_CPF ='1111111111111', 
-        DS_CNH = '111111111111111'
-        WHERE ID_CLIENT = 2;

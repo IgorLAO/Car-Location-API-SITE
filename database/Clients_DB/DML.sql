@@ -2,3 +2,30 @@ USE ELITE_WHEELS_DB;
 
 INSERT INTO CLIENTS_TB(NM_CLIENT, DS_EMAIL, DS_TELEFONE, DS_CPF, DS_CNH )
 			VALUES('bruno careca lustrosa', 'brunoCarecaLustrosa@gmail.com', 1154661166, 654631918, 694616641);
+            
+            
+            
+
+UPDATE CLIENTS_TB 
+SET 
+    NM_CLIENT = 'jajajja',
+    DS_EMAIL = 'aaaaaaa',
+    DS_TELEFONE = '1111111111',
+    DS_CPF = '1111111111111',
+    DS_CNH = '111111111111111'
+WHERE
+    ID_CLIENT = 2;
+    
+    
+    INSERT INTO	TYPES_CARS_TB (NM_TYPE)
+							VALUES('AUTOBOTS');
+                            
+	INSERT INTO CARS_TB (ID_TYPE, DS_MODEL, DS_BRAND, NR_YEAR, DS_PLACA)
+				VALUES(2, 'OPTIMUS PRIME', 'AUTOBOTS', '2010/05/01','ABC-113');
+	
+		SELECT 	NM_TYPE 			AS tipo,
+				DS_MODEL			AS Modelo,
+				DS_PLACA			AS Ano
+		FROM 	CARS_TB				AS C
+  INNER JOIN 	TYPES_CARS_TB  		AS TC ON TC.ID_TYPE = C.ID_TYPE;
+			
