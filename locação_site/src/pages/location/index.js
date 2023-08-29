@@ -101,9 +101,9 @@ export default function Location() {
 
                     <section className='ClientsList'>
                         <h1> Locações em Andamento </h1>
-                        <span>
+                        <span className='inputNameSearch'>
                             <label>Nome ou CPF</label>
-                            <input type='text' />
+                            <input type='text'  />
                         <i class="fa-solid fa-magnifying-glass"></i>
                         </span>
                         <table>
