@@ -113,7 +113,13 @@
         }
 
         .ClientsList {
-
+            .inputNameSearch{
+                width: 250px;
+                padding: 5px;
+                input{
+                    width: 240px;
+                }
+            }
             table {
                 border-collapse: separate;
                 border-spacing: 0px 10px;
@@ -126,7 +132,6 @@
                 display: none;
                 cursor: pointer;
                 transition: color 100ms ease-in-out, transform 100ms ease-in-out;
-
                 &:hover {
                     color: red;
                     transform: scale(1.1);
