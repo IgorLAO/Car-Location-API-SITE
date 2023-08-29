@@ -3,7 +3,7 @@
     flex-direction: column;
     background-color: #000;
     flex-direction: column;
-    width: 20%;
+    min-width: 18%;
     min-height: 100%;
     position: relative;
 
@@ -27,12 +27,13 @@
 
         .options {
             color: #fff;
-
+            width: 115%;
             div {
                 display: flex;
                 align-items: center;
                 padding: 15px 15px 15px 27px;
-                width: 100%;
+                min-width: 100%;
+            
 
                 a {
                     font-weight: 500;
