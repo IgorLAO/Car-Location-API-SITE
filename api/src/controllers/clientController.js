@@ -17,13 +17,21 @@ server.get('/cliente', async (req, resp) => {
 server.post('/cliente', async (req, resp) => {
     try {
         const add = req.body
-        let data = await AddClient(add);
+        
+        let get = await List();
+        console.log(get);
+        
+        if (add.nome === '')
+            throw new Error('nome obrigatorio');
+        
+        if (add.email === '')
+            throw new Error('email éobrigatorio');
+        
+        
+        
+            let data = await AddClient(add);
+        resp.send(data);
 
-        let get = await List()
-        if (add.cpf === get.DS_CPF){
-            console.log(add)
-        }
-        resp.send(data)
     } catch (err) {
         resp.status(500).send({
             error: err.message
@@ -37,9 +45,7 @@ server.put('/cliente/:id', async (req, resp) => {
     try {
         let addId = req.params.id
         let add = req.body
-
         const resposta = await Update(addId, add)
-
        
     } catch (err) {
         resp.status(400).send({

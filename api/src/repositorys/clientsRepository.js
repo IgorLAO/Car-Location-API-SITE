@@ -9,17 +9,21 @@ export async function List() {
 
 export async function AddClient(C) {
     let sql = `
-    INSERT INTO CLIENTS_TB(NM_CLIENT, DS_EMAIL, DS_TELEFONE, DS_CPF, DS_CNH )
+    INSERT INTO CLIENTS_TB(NM_CLIENT,
+            DS_EMAIL,
+            DS_TELEFONE,
+            DS_CPF, 
+            DS_CNH )
 			VALUES(?, ?, ?, ?, ?)`;
 
-    let [response] = await config.query(sql,[C.name, C.email, C.telefone, C.cpf, C.cnh])
-    
+    let [response] = await config.query(sql, [C.name, C.email, C.telefone, C.cpf, C.cnh])
+
     return response
 };
 
 export async function Update(id, C) {
     let sql = `
-    UPDATE CLIENTS_TB 
+    UPDATE CLIENTS_TB
            SET NM_CLIENT = ?,
            DS_EMAIL = ?,
            DS_TELEFONE = ?, 
@@ -27,7 +31,7 @@ export async function Update(id, C) {
            DS_CNH = ?
            WHERE ID_CLIENT = ?`;
 
-    let [resp] = await config.query(sql,[C.name, C.email, C.telefone, C.cpf, C.cnh, id])
+    let [resp] = await config.query(sql, [C.name, C.email, C.telefone, C.cpf, C.cnh, id])
     return resp.affectedRows
 }
 
