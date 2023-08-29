@@ -20,6 +20,7 @@ export default function ClientsControl() {
       cpf: CPF,
       cnh: CNH
     }
+    
     let response = await axios.post('http://localhost:5000/cliente', infos);
   }
 
