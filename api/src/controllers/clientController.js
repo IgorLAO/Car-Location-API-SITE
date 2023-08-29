@@ -19,11 +19,10 @@ server.post('/cliente', async (req, resp) => {
         const add = req.body
         let data = await AddClient(add);
 
-        let get = List()
-        if (data.ID_CPF == get.ID_CPF)
-            throw new Error('sao ingual')
-        else
-            resp.status(204).send()
+        let get = await List()
+        if (add.cpf === get.DS_CPF){
+            console.log(add)
+        }
         resp.send(data)
     } catch (err) {
         resp.status(500).send({
