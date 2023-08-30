@@ -3,15 +3,18 @@ import express from 'express';
 import cors from 'cors';
 
 import clientController from './controllers/clientController.js'
-import VehiclesController from './controllers/VehiclesController.js'
+import VehiclesController from './controllers/VehiclesController.js';
+import typeVehicle  from './controllers/typeVehicles.js';
+
 
 const server = express();
 server.use(cors());
 server.use(express.json());
 
 server.listen(process.env.PORT, console.log(`
-    na porta ${process.env.PORT}
+   online na porta ${process.env.PORT}
 `));
 
-server.use(clientController)
-server.use(VehiclesController)
+server.use(clientController);
+server.use(VehiclesController);
+server.use(typeVehicle);
