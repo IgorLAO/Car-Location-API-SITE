@@ -5,34 +5,37 @@ import './index.scss';
 import axios from 'axios';
 
 export default function ClientsControl() {
-  const [nome, setNome] = useState('');
+  const [Nome, setNome] = useState('');
   const [Email, setEmail] = useState('');
   const [Telefone, setTelefone] = useState('');
   const [CPF, setCPF] = useState('');
   const [CNH, setCNH] = useState('');
+
   const [clientsList, setClientsList] = useState([]);
 
   const Insert = async () => {
     let infos = {
-      name: nome,
-      email: Email,
-      telefone: Telefone,
-      cpf: CPF,
-      cnh: CNH
+      Nome: Nome,
+      Email: Email,
+      Telefone: Telefone,
+      CPF: CPF,
+      CNH: CNH
     }
     
     let response = await axios.post('http://localhost:5000/cliente', infos);
   }
 
-  useEffect(() => {
-    const FetchData = async () => {
-      let resp = await axios.get('http://localhost:5000/cliente');
-      let data = [resp.data]
+  const FetchData = async () => {
+    let resp = await axios.get('http://localhost:5000/cliente');
+      let data = resp.data
       
       setClientsList(data);
       console.log(data)
     }
+    
+    useEffect(() => {
     FetchData();
+
   });
 
   return (
@@ -50,27 +53,27 @@ export default function ClientsControl() {
             <h1> Novo Cliente </h1>
             <span >
               <label>Nome</label>
-              <input type='text' />
+              <input type='text' onChange={(e) => setNome(e.target.value)} />
             </span>
 
             <span >
               <label>Email</label>
-              <input type='text' />
+              <input type='text' onChange={(e) => setEmail(e.target.value)}/>
             </span>
 
             <span>
               <label>Telefone</label>
-              <input type='text' />
+              <input type='text' onChange={(e) => setTelefone(e.target.value)}/>
             </span>
 
             <span>
               <label>CPF</label>
-              <input type='text' />
+              <input type='text' onChange={(e) => setCPF(e.target.value)} />
             </span>
 
             <span>
               <label>CNH</label>
-              <input type='text' />
+              <input type='text' onChange={(e) => setCNH(e.target.value)}/>
             </span>
 
             <span className='btnSpan'>
@@ -88,9 +91,9 @@ export default function ClientsControl() {
             <table>
               <colgroup>
                 <col style={{ width: 30 + '%' }} />
-                <col style={{ width: 20 + '%' }} />
-                <col style={{ width: 15 + '%' }} />
-                <col style={{ width: 25 + '%' }} />
+                <col style={{ width: 30 + '%' }} />
+                <col style={{ width: 10 + '%' }} />
+                <col style={{ width: 10 + '%' }} />
               </colgroup>
               <thead>
                 <tr>
@@ -101,14 +104,15 @@ export default function ClientsControl() {
                 </tr>
               </thead>
               <tbody>
-                {clientsList.map( item => 
+                {clientsList.map((item) => <>
                 <tr>
-                  <td>{item.NM_CLIENTE}</td>
-                  <td> {item.DS_EMAIL} </td>
-                  <td> {item.DS_CPF} </td>
-                  <td> {item.DS_CNH} </td>
+                  <td>{item.Nome}</td>
+                  <td> {item.Email} </td>
+                  <td> {item.CPF} </td>
+                  <td> {item.CNH} </td>
                   <td className='btns' style={{ display: 'flex', height: 20 }}><i class="fa-regular fa-pen-to-square"></i> <i class="fa-solid fa-delete-left"></i></td>
                 </tr>
+                </>
                   )}
 
               </tbody>

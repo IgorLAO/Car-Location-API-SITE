@@ -4,6 +4,7 @@ import cors from 'cors';
 
 import clientController from './controllers/clientController.js'
 import VehiclesController from './controllers/VehiclesController.js'
+import TypesVehiclesController from './controllers/TypesVehiclesController.js'
 
 const server = express();
 server.use(cors());
@@ -15,3 +16,4 @@ server.listen(process.env.PORT, console.log(`
 
 server.use(clientController)
 server.use(VehiclesController)
+server.use(TypesVehiclesController)

@@ -1,10 +1,32 @@
 import './index.scss';
 import LateralMenu from '../components/menuComponent/menu';
 import AccountBar from '../components/accountBar/accountBar';
-import { useRef } from 'react';
+import axios from 'axios'
+import { useEffect, useRef, useState } from 'react';
 
 export default function CarsControl() {
+    const [listTypes, setListTypes] = useState([]);
+    const [errMessage, setErrMessage] = useState('');
 
+    const FetchListTypes = async () => {
+        try {
+            let resp = await axios.get('http://localhost:5000/veiculos/tipos')
+            setListTypes(resp.data)
+            console.log(resp)
+
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
+
+    const FetchListVehicles = () =>{
+        
+    } 
+
+    useEffect(() =>{
+        FetchListTypes
+    });
 
     return (
         <div className='CarsMain'>
@@ -22,17 +44,10 @@ export default function CarsControl() {
                         <span >
                             <label>Nome</label>
                             <select id="veiculo" name="veiculo">
-                                <option value="carro">Carro</option>
-                                <option value="motocicleta">Motocicleta</option>
-                                <option value="caminhao">Caminhão</option>
-                                <option value="van">Van</option>
-                                <option value="onibus">Ônibus</option>
-                                <option value="pickup">Picape</option>
-                                <option value="utilitario">Utilitário</option>
-                                <option value="esportivo">Esportivo</option>
-                                <option value="sedan">Sedã</option>
-                                <option value="convertivel">Conversível</option>
-                                <option value="minivan">Minivan</option>
+                                <option> Selecione </option>
+                                {listTypes.map(item =>
+                                    <option> {item.Tipo} </option>
+                                )}
                             </select>
                         </span>
 
