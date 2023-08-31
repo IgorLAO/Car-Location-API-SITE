@@ -75,6 +75,10 @@ export async function Update(id, V) {
   return resp
 };
 
+
+
+
+
 export async function Delete(id) {
   let sql = `DELETE FROM TB_VEHICLE
                     WHERE id_VEHICLE = ?`
