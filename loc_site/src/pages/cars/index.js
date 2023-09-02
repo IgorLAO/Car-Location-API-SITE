@@ -25,7 +25,7 @@ export default function CarsControl() {
     } 
 
     useEffect(() =>{
-        FetchListTypes
+        FetchListTypes()
     });
 
     return (
