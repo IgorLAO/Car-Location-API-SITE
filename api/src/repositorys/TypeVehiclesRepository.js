@@ -12,7 +12,9 @@ export async function SearchByID(id) {
 
 export async function listTypes(){
     let sql = `
-        SELECT      DS_TYPE  AS Tipo 
+        SELECT 
+        ID_TYPE     AS ID_TIPO,
+        DS_TYPE     AS Tipo 
         FROM        TB_TYPE_VEHICLE`; 
     let [resp] = await config.query(sql)
     return resp

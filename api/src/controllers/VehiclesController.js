@@ -5,7 +5,6 @@ let server = Router();
 
 server.get('/veiculos', async (req, resp) => {
         try {
-
                 let res = await ListCars()
                 resp.send(res)
 
@@ -18,7 +17,11 @@ server.get('/veiculo', async (req, resp) => {
         try {
                 let search = req.query.search;
                 let res = await Seraching(search);
-                resp.send(res);
+        
+        if(res.length === 0)
+                throw new Error("nao encontrado")
+        
+        resp.send(res);
         } catch (err) {
                 resp.status(500).send({ erro: err.message })
         }

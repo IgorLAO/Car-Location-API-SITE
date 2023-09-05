@@ -44,7 +44,8 @@ export async function AddVehicle(v) {
       INSERT INTO TB_VEHICLE (ID_TYPE, DS_MODEL, DS_BRAND, NR_YEAR, DS_PLATE)
              VALUES(?, ?, ?, ?, ?)`;
 
-  let [resp] = await config.query(sql, [v.idTipo,
+  let [resp] = await config.query(sql, [
+  v.idTipo,
   v.Modelo,
   v.Marca,
   v.Ano,
